@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import Router from './shared/router';
 
 const app = () => {
   return (
-    <div>Start MiniProject!!!!!!</div>
+    <Router />
   )
 }
 
