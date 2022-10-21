@@ -7,13 +7,17 @@ import {
   ImageBox,
   FormBox,
   InputStyle,
-  ButtonBox
+  TextareaStyle,
+  ButtonBox,
+  TextStyle,
+  UpdateButton,
+  ImageButton
 } from './DetailUpdateStyle';
 
 const DetailUpdate = () => {
 
   const [title, setTitle, onChangeTitle] = useInput('')
-  const [content, setContent, onChangeBody] = useInput('')
+  const [content, setContent, onChageBody] = useInput('')
 
   const onSubmitHandler = (e) => {
     e.preventDefault()
@@ -24,23 +28,24 @@ const DetailUpdate = () => {
 
   return (
     <DetailUpdateContainer>
-      <ImageBox>이미지 수정</ImageBox>
+      <ImageBox>
+        <ImageButton>+</ImageButton>
+      </ImageBox>
       <FormBox>
         <form onSubmit={onSubmitHandler}>
-          <p>제목</p>
+          <TextStyle>Title</TextStyle>
           <InputStyle type='text'
             name='title'
             value={title}
             onChange={onChangeTitle} />
-          <p>내용</p>
-          <InputStyle type='text'
-            name='content'
+          <TextStyle>Content</TextStyle>
+          <TextareaStyle type='text'
+            name='title'
             value={content}
-            onChange={onChangeBody} />
+            onChange={onChageBody} />
           <ButtonBox>
-            <button>수정완료</button>
+            <UpdateButton>수정 완료</UpdateButton>
           </ButtonBox>
-
         </form>
       </FormBox>
     </DetailUpdateContainer>

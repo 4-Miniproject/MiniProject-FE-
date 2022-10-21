@@ -3,7 +3,8 @@ import {
   CommentListContainer,
   CommentListImage,
   CommentListText,
-  CommentListButton
+  CommentListButton,
+  ButtonStyle
 } from './CommentListStyle'
 
 const CommentList = () => {
@@ -13,11 +14,11 @@ const CommentList = () => {
       <CommentListImage>프로필</CommentListImage>
       <CommentListText>
         <p>곰젤리(닉네임)</p>
-        <p>경포대말고 해운대는 어떠신가요 선생님들~?(댓글 내용)</p>
+        <p>경포대말고 해운대는 어떠신가요 선생님들?(댓글 내용)</p>
       </CommentListText>
       <CommentListButton>
-        <button>수정</button>
-        <button>삭제</button>
+        <ButtonStyle><i class="fa-solid fa-pen"></i></ButtonStyle>
+        <ButtonStyle><i class="fa-solid fa-trash"></i></ButtonStyle>
       </CommentListButton>
     </CommentListContainer>
   )

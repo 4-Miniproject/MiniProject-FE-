@@ -2,32 +2,35 @@ import React from 'react';
 import CommentForm from '../commentForm/CommentForm';
 import CommentList from '../commentList/CommentList';
 
-
-
 import {
   DetailContainer,
   DetailInfoBox,
   ImageBox,
   TextBox,
-  ButtonBox
+  ButtonBox,
+  TitleBox,
+  ButtonStyle,
+  ButtonStyle2
 } from './DetailInfoStyle'
 
 const DetailInfo = () => {
   return (
     <>
       <DetailContainer>
+        <TitleBox>
+          <h3>경포대 해수욕장(경포대)</h3>
+          <ButtonStyle2><i class="fa-solid fa-delete-left"></i></ButtonStyle2>
+        </TitleBox>
         <DetailInfoBox>
           <ImageBox>이미지</ImageBox>
-          <TextBox>
-            <p>제목 : 경포대 해수욕장</p>
-            <p>물이 시원하고 아주 좋습니다 근데 지금가면 춥겠죠?</p>
-            <p>위치 : 강원도</p>
-            <ButtonBox>
-              <button>수정</button>
-              <button>삭제</button>
-            </ButtonBox>
-          </TextBox>
         </DetailInfoBox>
+        <TextBox>
+          <p>물이 시원하고 아주 좋습니다 근데 지금가면 춥겠죠?</p>
+          <ButtonBox>
+            <ButtonStyle>수정하기</ButtonStyle>
+            <ButtonStyle>삭제하기</ButtonStyle>
+          </ButtonBox>
+        </TextBox>
       </DetailContainer>
       <CommentForm />
       <CommentList />
