@@ -1,8 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
-import feeds from '../modules/feedsSlice';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import posts from '../modules/postsSlice';
+import comments from '../modules/commentSlice';
+import members from '../modules/commentSlice';
+
 
 const store = configureStore({
-  reducer: { feeds: feeds },
+  reducer: { posts, comments, members },
+  middleware: getDefaultMiddleware({
+    serializableCheck: false,
+  }),
+
 });
 
 export default store;

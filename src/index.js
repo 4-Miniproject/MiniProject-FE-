@@ -4,6 +4,7 @@ import './index.css'
 import App from './app'
 import store from "./redux/config/configStore"
 import { Provider } from "react-redux"
+import '@fortawesome/fontawesome-free/js/all.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

@@ -1,26 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   CommentListContainer,
   CommentListImage,
   CommentListText,
-  CommentListButton
+  CommentListButton,
+  ButtonStyle,
+  CommentListBox,
+  TextBox
 } from './CommentListStyle'
 
-const CommentList = () => {
-  //map
+import { useDispatch, useSelector } from 'react-redux';
+import { __getComments, __deleteComment } from '../../redux/modules/commentSlice';
+import useInput from '../hooks/useInput';
+
+const CommentList = ({ detail }) => {
+  const dispatch = useDispatch();
+  const { comments } = useSelector((state) => state.comments);
+  const [comment, setComment, onChangeComment] = useInput('');
+  const [editId, seteditId] = useState(-1);
+
+  useEffect(() => {
+    dispatch(__getComments())
+  }, [dispatch]);
+
   return (
-    <CommentListContainer>
-      <CommentListImage>프로필</CommentListImage>
-      <CommentListText>
-        <p>곰젤리(닉네임)</p>
-        <p>경포대말고 해운대는 어떠신가요 선생님들~?(댓글 내용)</p>
-      </CommentListText>
-      <CommentListButton>
-        <button>수정</button>
-        <button>삭제</button>
-      </CommentListButton>
-    </CommentListContainer>
+    <div>
+      {/* {comments.map((comment) => {
+        return (
+          <div key={comment.id}>
+            <textarea {...editId === comment.id ? '' : 'readonly'}>
+              {comment.comment}
+            </textarea>
+            <button>수정</button>
+            <button>삭제</button>
+          </div>
+        )
+      })} */}
+
+    </div>
+
+
   )
+
+
+  //map
+  // return (
+  //   <CommentListContainer>
+  //     {detail.comments.map((comment) => {
+  //       return (
+  //         <CommentListBox key={comment.commentid}>
+  //           {/* <CommentListImage>프로필</CommentListImage> */}
+  //           <TextBox>
+  //             <p>아직 미정(닉네임)</p>
+  //             <p>{comment.comment}</p>
+  //           </TextBox>
+
+  //           <CommentListButton>
+  //             <ButtonStyle><i className="fa-solid fa-pen"></i></ButtonStyle>
+  //             <ButtonStyle><i className="fa-solid fa-trash"></i></ButtonStyle>
+  //           </CommentListButton>
+  //         </CommentListBox>
+  //       )
+  //     })}
+
+  //   </CommentListContainer>
+  // )
 }
 
 export default CommentList;
