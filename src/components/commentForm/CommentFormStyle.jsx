@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const CommentFormContainer = styled.div`
+export const CommentFormContainer = styled.form`
   width:1000px;
   height: 100px;
   display: flex;
@@ -12,7 +12,8 @@ export const CommentFormContainer = styled.div`
 `;
 
 export const CommentText = styled.textarea`
-  border-color: #31a3ff;
+  border: 1px solid #31a3ff;
+  outline-color: #31a3ff;
   width: 750px;
   height: 90px;
 `;
