@@ -15,7 +15,7 @@ const TourAll = () => {
   useEffect(() => {
     dispatch(__getPosts());
   }, [dispatch]);
-
+  
 
   return (
     <Layout>

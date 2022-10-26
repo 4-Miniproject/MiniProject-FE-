@@ -9,7 +9,7 @@ const initialState = {
     imgUrl: '',
     category: ''
   },
-  // 
+  // posts 추가 @@
   posts: [],
   isLoading: false,
   error: null,
@@ -21,9 +21,15 @@ const initialState = {
 export const __getPosts = createAsyncThunk(
   "GET_POSTS",
   async (payload, thunkAPI) => {
+
     try {
-      const { data } = await instance.get('/api/posts');
-      return thunkAPI.fulfillWithValue(data);
+      const config = {
+        headers: {
+          Authorization : localStorage.getItem('token')
+        }
+      }
+      const { data } = await instance.get('/api/posts', config);
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -74,6 +80,7 @@ export const __deletePostDetail = createAsyncThunk(
 export const __addPosts = createAsyncThunk(
   'ADD_POST',
   async (payload, thunkAPI) => {
+    console.log('payload', payload)
   try {
     const {data} = await instance.post(`/api/posts/${payload}`, payload); //post('api/posts', payload)
     return thunkAPI.fulfillWithValue(data);

@@ -19,7 +19,6 @@ const AddpageForm = () => {
     const [category, setCategory] = useState('');
     const [content, setContent] = useState('');
 
-    
     const [post, setPost] = useState({
         imgUrl: '',
         title: '',
@@ -82,12 +81,12 @@ const AddpageForm = () => {
     formdata.append("category", category);
     formdata.append("content", content);
 
-
     formdata.append("imgurl", imgUrl);
     formdata.append('dto', new Blob([JSON.stringify(formdata)], { type: "//http://www.hanghaetour.shop/api/posts"}))
 
 
     dispatch(__addPosts(formdata));
+    console.log(formdata)
 
     // 글 작성 시 홈으로 보냄
     if(imgFile === null || title === '' || content === '') {
@@ -121,7 +120,9 @@ const AddpageForm = () => {
               accept="image/*"
               style={{display:"none"}}
               placeholder="이미지를 넣으려면 클릭하세요"
-              onChange={(e) => onChangeImgHandler(e)}
+              onChange={(e) => 
+                onChangeImgHandler(e)
+              }
               />
           </div>
         </div>
@@ -193,6 +194,8 @@ const StyledFormBox = styled.div`
 const ButtonGroup = styled.div`
   display:flex;
   justify-content:center;
+
+
   gap: 10px;
   background-color: skyblue;
 `
