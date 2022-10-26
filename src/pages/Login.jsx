@@ -4,11 +4,13 @@ import useInput from '../components/hooks/useInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { memberLogin } from '../redux/modules/memberSlice';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [nickname, setNickname, onChangeNickname] = useInput('');
   const [password, setPassword, onChangePassword] = useInput('');
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -18,6 +20,9 @@ const Login = () => {
       nickname,
       password
     }));
+    setNickname('');
+    setPassword('');
+    // navigate('/posts')
   };
 
   return (
@@ -30,7 +35,7 @@ const Login = () => {
             <InputStyle value={password} type='password' onChange={onChangePassword} placeholder='패스워드를 입력해주세요.' />
             <ButtonStyle>로그인</ButtonStyle>
           </FormStyle>
-          <Link to='/signup'>아직 회원이 아니신가요?</Link>
+          <SLink to='/signup'>아직 회원이 아니신가요?</SLink>
         </div>
       </LoginContainer>
     </Layout>
@@ -38,6 +43,11 @@ const Login = () => {
   );
 };
 export default Login;
+
+const SLink = styled(Link)`
+  color: #ff6551;
+  text-decoration: none;
+`;
 
 const ButtonStyle = styled.button`
   width: 300px;
@@ -48,12 +58,15 @@ const ButtonStyle = styled.button`
   border-radius:15px;
   margin-top: 10px;
   cursor: pointer;
+  &:hover {
+    background-color: #003aa7;
+  }
 `;
 
 const TextStyle = styled.div`
   font-size:20px;
   font-weight: 600;
-  color: #53a9fa;
+  color: #005db4;
   margin-bottom: 30px;
 `;
 
