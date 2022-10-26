@@ -3,23 +3,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import { __getPosts } from '../redux/modules/postsSlice';
+import Layout from '../components/layout/Layout';
 
 // 메인페이지 게시글 조회
 const TourAll = () => {
 
-  const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.posts);
+  // const dispatch = useDispatch();
+  // const { posts } = useSelector((state) => state.posts);
 
-  console.log(posts)
+  // console.log(posts)
+
 
   useEffect(() => {
     dispatch(__getPosts());
   }, [dispatch]);
   
 
+
   return (
     <Layout>
       <div>
+
         {posts.map((post) => {
           return (
             <div
@@ -35,6 +39,7 @@ const TourAll = () => {
         })}
       </div>
     </Layout>
+
   )
 }
 

@@ -7,6 +7,7 @@ import HomePage from '../pages/HomePage';
 
 import Login from '../pages/Login';
 import TourAll from '../pages/TourAll';
+import Signup from '../pages/Signup';
 
 
 
@@ -20,7 +21,9 @@ const Router = () => {
 
         <Route path='/addpost' element={<AddPage />} />
         <Route path='/posts' element={<TourAll />} />
+
         <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );
