@@ -27,15 +27,17 @@ const CommentList = ({ detail }) => {
     <div>
       {/* {comments.map((comment) => {
         return (
-          <div key={comment.id}>
-            <textarea {...editId === comment.id ? '' : 'readonly'}>
-              {comment.comment}
-            </textarea>
-            <button>수정</button>
-            <button>삭제</button>
-          </div>
+          
         )
       })} */}
+
+      <div>
+        <textarea {...editId === comment.id ? '' : 'readonly'}>
+          {comment.comment}
+        </textarea>
+        <button>수정</button>
+        <button>삭제</button>
+      </div>
 
     </div>
 

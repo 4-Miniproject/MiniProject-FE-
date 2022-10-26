@@ -3,7 +3,6 @@ import posts from '../modules/postsSlice';
 import comments from '../modules/commentSlice';
 import members from '../modules/commentSlice';
 
-
 const store = configureStore({
   reducer: { posts, comments, members },
   middleware: getDefaultMiddleware({
@@ -13,3 +12,4 @@ const store = configureStore({
 });
 
 export default store;
+
