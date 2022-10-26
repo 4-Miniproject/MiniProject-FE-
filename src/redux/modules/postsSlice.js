@@ -9,6 +9,8 @@ const initialState = {
     imgUrl: '',
     category: ''
   },
+  // 
+  posts: [],
   isLoading: false,
   error: null,
 }
@@ -67,6 +69,18 @@ export const __deletePostDetail = createAsyncThunk(
     }
   }
 )
+
+// 게시글 작성 @@
+export const __addPosts = createAsyncThunk(
+  'ADD_POST',
+  async (payload, thunkAPI) => {
+  try {
+    const {data} = await instance.post(`/api/posts/${payload}`, payload); //post('api/posts', payload)
+    return thunkAPI.fulfillWithValue(data);
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e)
+  }
+})
 
 export const postsSlice = createSlice({ // 리듀서를 만들어주는 역할
   name: "posts", // 모듈이름
@@ -132,7 +146,19 @@ export const postsSlice = createSlice({ // 리듀서를 만들어주는 역할
       state.isLoading = false
       state.error = action.payload
     },
-
+    
+    // 게시글 작성 @@
+    [__addPosts.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__addPosts.fulfilled]: (state, action) => {
+        state.isLoading = true;
+        state.posts.push(action.payload);
+    },
+    [__addPosts.rejected]: (state, action) => {
+        state.isLoading = true;
+        state.error = action.payload;
+    },
   },
 
 })

@@ -6,8 +6,10 @@ import {
   HeaderLogo,
   HeaderUl,
   HeaderLi,
-  HeaderMenu
+  HeaderMenu,
+  AddButton
 } from './HeaderStyle';
+
 
 const Header = () => {
   const native = useNavigate();
@@ -21,6 +23,9 @@ const Header = () => {
       <HeaderLogo>
         <h3>여행 어디로가지?</h3>
       </HeaderLogo>
+      <AddButton>
+        <button onClick={()=> native('/addpost')}>작성하기</button>
+      </AddButton>
       <HeaderMenu>
         <HeaderUl>
           {CategoryList.map(menu => <HeaderLi key={menu}>{menu}</HeaderLi>)}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AddPage from '../pages/AddPage';
 import DetailPage from '../pages/DetailPage';
 import DetailUpdatePage from '../pages/DetailUpdatePage';
 import HomePage from '../pages/HomePage';
@@ -17,6 +18,7 @@ const Router = () => {
         <Route path='/detail/:id' element={<DetailPage />} />
         <Route path='/update/:id' element={<DetailUpdatePage />} />
 
+        <Route path='/addpost' element={<AddPage />} />
         <Route path='/posts' element={<TourAll />} />
         <Route path='/login' element={<Login />} />
       </Routes>
