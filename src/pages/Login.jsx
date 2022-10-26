@@ -47,6 +47,7 @@ export default Login;
 const SLink = styled(Link)`
   color: #ff6551;
   text-decoration: none;
+  font-size: 14px;
 `;
 
 const ButtonStyle = styled.button`
@@ -55,8 +56,11 @@ const ButtonStyle = styled.button`
   border: none;
   background-color: #508dff;
   color: #fff;
-  border-radius:15px;
+  border-radius:7px;
   margin-top: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: 0.3s;
   cursor: pointer;
   &:hover {
     background-color: #003aa7;
@@ -71,10 +75,16 @@ const TextStyle = styled.div`
 `;
 
 const InputStyle = styled.input`
-  border: 1px solid #b3b3b3;
+  border: 1px solid #ccc;
   margin-bottom: 10px;
-  height: 30px;
+  height: 40px;
   outline: none;
+  padding: 0 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  &::placeholder{
+    color:#aaa;
+  }
 `;
 
 const FormStyle = styled.form`
@@ -92,7 +102,8 @@ const LoginContainer = styled.div`
   justify-content: center;
   /* background-color: #a8a8a8; */
   width: 500px;
-  height: 400px;
+  /* height: 400px; */
   border-radius: 10px;
   text-align: center;
+  margin-top: 20px;
 `;

@@ -6,10 +6,8 @@ import {
   HeaderLogo,
   HeaderUl,
   HeaderLi,
-  HeaderMenu,
-  AddButton
+  HeaderMenu
 } from './HeaderStyle';
-
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,7 +28,17 @@ const Header = () => {
     <SHeader>
       {!token ?
         (<LoginButton onClick={() => navigate('/login')}>
-          <div>로그인</div>
+          <div 
+            style={{
+              color: "#fff", 
+              background:"#508dff", 
+              borderRadius:"3px", 
+              padding:"5px 10px", 
+              fontWeight:"600",
+              marginTop:"15px",
+              marginRight:"10px"
+            }}
+          >로그인</div>
         </LoginButton>)
         :
         (<LoginButton onClick={logOut}>
@@ -45,11 +53,15 @@ const Header = () => {
         <div>로그아웃</div>
       </LoginButton> */}
       <HeaderLogo>
-        <h3>여행 어디로가지?</h3>
+        <img className="phoneImage" src="tt.png" style={{
+          width: "250px", 
+          display:"block",
+          margin:"0 auto"
+        }}/>
+        <h3 style={{
+              margin:"15px 0",
+            }}>여행 어디로가지?</h3>
       </HeaderLogo>
-      <AddButton>
-        <button onClick={()=> native('/addpost')}>작성하기</button>
-      </AddButton>
       <HeaderMenu>
         <HeaderUl>
           {CategoryList.map(menu => <HeaderLi key={menu}>{menu}</HeaderLi>)}
