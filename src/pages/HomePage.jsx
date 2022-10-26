@@ -4,7 +4,9 @@ import Layout from '../components/layout/Layout';
 const HomePage = () => {
   return (
     <Layout>
-      <div>Home</div>
+      <div>
+        Loby
+      </div>
     </Layout>
 
   )

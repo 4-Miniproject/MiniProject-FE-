@@ -31,3 +31,8 @@ export const SLink = styled(Link)`
     text-decoration: none;
     color:black;
 `;
+
+export const AddButton = styled.div`
+display: flex;
+justify-content: center;
+`;
