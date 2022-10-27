@@ -21,13 +21,13 @@ const DetailUpdate = () => {
 
   const { id } = useParams();
   const { detail } = useSelector((state) => state.posts);
-  //console.log(detail)
+  console.log(detail)
 
   const [title, setTitle, onChangeTitle] = useInput(detail.title);
   const [content, setCoentent, onChageContent] = useInput(detail.content);
 
   const [category, setCategory] = useState('');
-  const [imgUrl, setImgUrl] = useState('');
+  //const [imgUrl, setImgUrl] = useState('');
 
 
   useEffect(() => {
@@ -43,27 +43,28 @@ const DetailUpdate = () => {
       content.trim() === '') return alert('모든 항목을 입력해 주세요!');
     dispatch(__putPostDetail(
       {
+        id: detail.id,
         title,
         content,
-        imgUrl,
-        category
+        category,
+        imgUrl: detail.imgUrl
       }
     ));
     navigate(`/detail/${id}`)
   };
 
-  const onimgChangeHandler = (e) => {
-    const formData = new FormData();
-    formData.append('file', e.target.value);
-    setImgUrl(formData);
-  }
+  // const onimgChangeHandler = (e) => {
+  //   const formData = new FormData();
+  //   formData.append('file', e.target.value);
+  //   setImgUrl(formData);
+  // }
 
 
 
   return (
     <DetailUpdateContainer>
       <FormBox>
-        <ImageBox type='file' onChange={onimgChangeHandler} />
+        {/* <ImageBox type='file' onChange={onimgChangeHandler} /> */}
         <Sselect value={category} onChange={(e) => {
           setCategory(e.target.value)
         }}>

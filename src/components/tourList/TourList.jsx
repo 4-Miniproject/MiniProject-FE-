@@ -6,10 +6,10 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 const TourList = () => {
-
-    const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.posts);
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const { posts } = useSelector((state) => state.posts);
   console.log(posts)
 
 
@@ -22,20 +22,32 @@ const TourList = () => {
         <div>
           <section>
             <div>
-              <button onClick={()=> navigate('/addpost')}>작성하기</button>
+              <button
+                style={{
+                  color: "#fff", 
+                  background:"#508dff", 
+                  borderRadius:"3px", 
+                  padding:"5px 10px", 
+                  fontWeight:"600",
+                  marginTop:"15px",
+                  marginRight:"10px"
+                }}
+              onClick={()=> navigate('/addpost')}>작성하기</button>
             </div>
           </section>
           <section>
             <ListContainer>
               {posts.length !== 0 && posts.map((post) => {
                 return (
-                  <div key={post.id}>
-                    <Link to={`/detail/${post.id}`}>
-                      <div>{post.title}</div>
-                      <div>{post.category}</div>
-                      <div><img src={post.imgUrl} /></div>
+                  <PostBox key={post.id}>
+                    <Link
+                      style={{textDecoration:'none'}}
+                       to={`/detail/${post.id}`}>
+                        <Title>{post.category}</Title>
+                        <Title>{post.title}</Title>
+                        <ListImageBox><img style={{width: 300, height: 200, borderRadius: 10}} src={post.imgUrl} /></ListImageBox>
                     </Link>
-                  </div>
+                  </PostBox>
                 )
               })}
             </ListContainer>
@@ -49,10 +61,35 @@ const TourList = () => {
 export default TourList;
 
 const ListContainer = styled.div`
-    display: flex;
-    gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+`
+const PostBox = styled.div`
+  width : 300px;
+  height : 280px;
+  padding : 15px;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  &:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+  border : 2px solid black;
+  border-radius : 20px 10px;
+  background-color: white;
+`
+const ListImageBox = styled.div`
+  height: 35vh;
 `
 
+const Title = styled.div`
+border : 1px solid black;
+border-radius: 10px;
+margin:10px;
+`
 // const ListContainer = styled.div`
 //   width: 900px;
 //   border: 1px solid black;

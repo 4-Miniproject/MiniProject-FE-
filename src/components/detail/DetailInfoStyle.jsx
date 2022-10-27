@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const DetailContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border:2px solid #0065b8;
-  border-radius: 5px;
+  border:1px solid #85beff;
+  border-radius: 15px;
   width: 1000px;
   height: 550px;
 `;
@@ -44,20 +43,23 @@ export const ButtonStyle = styled.button`
   width: 90px;
   height: 50px;
   cursor: pointer;
-  color: #0065b8;
-  border: 1px solid #0065b8;
+  color: #fff;
+  border: 1px solid #4a9eff;
+  background-color: #508dff;
+  border-radius: 10px;
   margin-left: 10px;
-  background-color: transparent;
+  
   &:hover{
     border: 1px solid #0065b8;
     background-color: #0065b8;
-    color: #fff
+    
   }
 `;
 
 export const ButtonStyle2 = styled.button`
   cursor: pointer;
-  color: #0065b8;
+  color: #4a9eff;
+  border-radius: 10px;
   border: none;
   background-color: transparent;
   font-size: 30px;

@@ -35,19 +35,20 @@ const Signup = () => {
       passwordConfirm
     }));
     alert('가입이 완료 되었습니다!')
-    navigate('/login')
+    navigate('/')
   }
-
-
-
   return (
     <Layout>
       <LoginContainer>
         <div>
+
+          <TextStyle>회원가입</TextStyle>
           <FormStyle onSubmit={onSubmitSignUpHandler}>
-            <TextStyle>회원가입</TextStyle>
-            <InputStyle type='text' value={nickname}
-              onChange={(e) => { setNickName(e.target.value) }} placeholder='아이디를 입력해주세요.' />
+            <InputBox>
+              <InputStyle1 type='text' value={nickname}
+                onChange={(e) => { setNickName(e.target.value) }} placeholder='아이디를 입력해주세요.' />
+              <CheckButton>중복확인</CheckButton>
+            </InputBox>
             <InputStyle type='password' value={password}
               onChange={(e) => { setPassword(e.target.value) }} placeholder='비밀번호를 입력해주세요.' />
             <InputStyle type='password' value={passwordConfirm}
@@ -61,6 +62,34 @@ const Signup = () => {
 }
 
 export default Signup;
+
+const CheckButton = styled.button`
+  width: 70px;
+  height: 35px;
+  border: none;
+  background-color: #508dff;
+  color: #fff;
+  border-radius:15px;
+  margin-left: 10px;
+  
+  cursor: pointer;
+  &:hover {
+    background-color: #003aa7;
+  }
+`
+
+const InputBox = styled.div`
+  display: flex;
+    width: 500px;
+  
+`
+const InputStyle1 = styled.input`
+  border: 1px solid #b3b3b3;
+  margin-bottom: 30px;
+  height: 30px;
+  outline: none;
+  width: 295px;
+`
 
 const ButtonStyle = styled.button`
   width: 300px;

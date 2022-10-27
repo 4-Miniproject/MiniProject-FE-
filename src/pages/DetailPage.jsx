@@ -1,11 +1,14 @@
 import React from 'react';
 import DetailInfo from '../components/detail/DetailInfo';
+import Layout from '../components/layout/Layout';
 
 const DetailPage = () => {
   return (
-    <div>
-      <DetailInfo />
-    </div>
+    <Layout>
+      <div>
+        <DetailInfo />
+      </div>
+    </Layout>
   )
 }
 

@@ -13,11 +13,27 @@ const initialState = {
   error: null,
 };
 
+// 아이디 중복 확인
+// export const checkMember = createAsyncThunk(
+//   "CHECK_MEMBER",
+//   async (payload, thunkAPI) => {
+//     console.log(payload)
 
+//     try {
+//       const { data } = await axios.post("http://13.124.142.195/users/nickcheck", payload);
+//       console.log(data)
+//       return thunkAPI.fulfillWithValue(data);
+
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error);
+//     }
+//   }
+// );
+
+//회원가입
 export const addMember = createAsyncThunk(
   "ADD_MEMBER",
   async (payload, thunkAPI) => {
-
     try {
       const { data } = await instance.post("api/members/signup", payload);
       return thunkAPI.fulfillWithValue(data);
@@ -27,6 +43,7 @@ export const addMember = createAsyncThunk(
   }
 );
 
+// 로그인
 export const memberLogin = createAsyncThunk(
   'MEMBER_LOGIN',
   async (payload, thunkAPI) => {
@@ -36,12 +53,15 @@ export const memberLogin = createAsyncThunk(
         headers: {
           //웹브라우저 > 웹서버 쪽으로 요청하는 응용계층의 표현타입을 JSON으로
           'Content-Type': 'application/json',
-          // 'Authorization': 'Bearer ' + localStorage.getItem('Authorization') 1안
         },
-      };
-      const { data } = await instance.post('/api/members/login', payload, config)
-        .then((token) => {
 
+      };
+      // let isDone = false;
+
+      const { data } = await instance.post('/api/members/login', payload, config)
+
+        .then((token) => {
+          // isDone = true;
           // data = token
           // 로컬 스토리지는 키와 벨류로 이루어진 데이터를 저장할 수 있다.
           // 키에 데이터 쓰기 localStorage.setItem (https://www.daleseo.com/js-web-storage/)
@@ -57,19 +77,48 @@ export const memberLogin = createAsyncThunk(
             localStorage.setItem('Authorization', token.request.getResponseHeader('authorization'));
             localStorage.setItem('Refresh-Token', token.request.getResponseHeader('refresh-Token'));
             alert('로그인에 성공하였습니다!')
-
-            instance.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('Authorization');
-            window.location.replace('/posts');
+            // 아래 코드에 localStorage.getItem에 auth 소문자가 아니라, Authorization 해야한다.
+            // 위에 저장할 때 대문자로 했으니깐
+            //instance.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+            //instance.defaults.headers.common['Refresh-Token'] = localStorage.getItem('Refresh-Token');
+            window.location.replace('/posts');//수정필요
           }
         }).catch(error => {
           alert("아이디와 비밀번호를 확인해주세요!");
         })
       //localStorage.setItem('authorization', data.request.getResponseHeader('authorization'));
       //localStorage.setItem('refresh-Token', data.request.getResponseHeader('refresh-Token'));
+      // while (isDone === false);
       //return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       // alert('아이디와 비밀번호를 확인해주세요!')
       //return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const checkOut = createAsyncThunk(
+  "CHECKOUT",
+  async (payload, thunkAPI) => {
+    try {
+      const config = {
+        headers: {
+          //웹브라우저 > 웹서버 쪽으로 요청하는 응용계층의 표현타입을 JSON으로
+          'Content-Type': 'application/json',
+
+          // 서버의 logout 함수를 살펴보면, Request Header부분에 'Refresh-Token'을
+          // 확인하여, 해당토큰이 유효한지 보고 로그아웃을 결정한다.
+          // 토큰이 유효하면, 해당 사용자의 토큰을 삭제한다.
+          // 서버에서 넘어온 토큰에 'Bearer '이 있다.
+          'Authorization': localStorage.getItem('Authorization'),
+          'Refresh-Token': localStorage.getItem('Refresh-Token')
+        },
+
+      };
+      const { data } = await instance.post("/api/auth/members/logout", payload, config);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

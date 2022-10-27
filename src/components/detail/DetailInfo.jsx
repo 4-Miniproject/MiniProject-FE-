@@ -24,12 +24,12 @@ const DetailInfo = () => {
   const { id } = useParams();
   const { detail } = useSelector((state) => state.posts);
 
+  console.log(detail)
+
 
   useEffect(() => {
     dispatch(__getPostDetail(id));
   }, [])
-
-
 
   return (
     <>
@@ -58,8 +58,9 @@ const DetailInfo = () => {
           </ButtonBox>
         </TextBox>
       </DetailContainer>
-      {/* <CommentForm detail={detail} />
-      <CommentList detail={detail} /> */}
+      <CommentForm detail={detail} />
+      <CommentList detail={detail} />
+
     </>
   )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
 
 export const CommentListContainer = styled.div`
   width:1000px;
@@ -10,36 +10,27 @@ export const CommentListContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const CommentListImage = styled.div`
-  border: 1px solid #1290f7;
-  width: 100px;
-  height: 90px;
-  text-align: center;
-`;
-
-export const CommentListButton = styled.div`
-  /* border: 1px solid black;
-  display: flex;
-  flex-direction: column; */
-  
-`;
+export const CommentInput = styled.input`
+  width: 500px;
+  `;
 
 export const ButtonStyle = styled.button`
+  
   width: 45px;
   height: 45px;
   cursor: pointer;
-  color: #1290f7;
+  color: #4a9eff;
   border: none;
   background-color: transparent;
-  font-size: 20px;
+  font-size: 15px;
   &:hover{
-    color: #0e59fa;
+    color: #0065b8;
   }
 `;
 
 export const CommentListBox = styled.div`
   width: 1000px;
-  border-bottom:1px solid #1290f7;
+  border-bottom:1px solid #4a9eff;
   margin-bottom: 10px;
 `;
 
